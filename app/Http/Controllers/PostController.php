@@ -50,7 +50,12 @@ class PostController extends Controller
 
         echo "Titulo: {$post->title}<br>";
         echo "Subtitulo: {$post->subtitle}<br>";
-        echo "Conteúdo: {$post->description}<br> <hr>";
+        echo "Conteúdo: {$post->description}<br> ";
+        echo "Data de Criação: {$post->createdFmt}<br> <hr>";
+
+        //colocar mascara ou tirar .,:-!@
+//        $post->title = "Título de teste do meu artigo!";
+//        $post->save();
 
         $postAuthor = $post->author()->get()->first();
 
