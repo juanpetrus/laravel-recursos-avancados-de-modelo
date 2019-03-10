@@ -141,6 +141,24 @@ class UserController extends Controller
             }
         }
 
+        $students = User::students()->get();
+        if($students){
+            echo "<h1>Alunos</h1>";
+            foreach ($students as $student) {
+                echo "Nome: {$student->name} <br>";
+                echo "E-mail: {$student->email} <br>";
+            }
+        }
+
+        $admins = User::admins()->get();
+        if($admins){
+            echo "<h1>Admin</h1>";
+            foreach ($admins as $admin) {
+                echo "Nome: {$admin->name} <br>";
+                echo "E-mail: {$admin->email} <br>";
+            }
+        }
+
     }
 
     /**
