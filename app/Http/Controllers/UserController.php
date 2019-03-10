@@ -119,12 +119,25 @@ class UserController extends Controller
             }
         }
 
-        $comments = $user->commentsOnMyPost()->get();
+//        $comments = $user->commentsOnMyPost()->get();
+//        if($comments){
+//            echo "<h1>Comentários no meus Artigos</h1>";
+//
+//            foreach ($comments as $comment){
+//                echo "Post {$comment->post} User: {$comment->user} {$comment->content} <br>";
+//            }
+//        }
+
+//        $user->comments()->create([
+//            'content' => 'comentario modelo usuario'
+//        ]);
+
+        $comments = $user->comments()->get();
         if($comments){
-            echo "<h1>Comentários no meus Artigos</h1>";
+            echo "<h1>Comentarios</h1>";
 
             foreach ($comments as $comment){
-                echo "Post {$comment->post} User: {$comment->user} {$comment->content} <br>";
+                echo "#{$comment->id} Titulo {$comment->content} <br>";
             }
         }
 

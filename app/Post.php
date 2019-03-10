@@ -17,4 +17,9 @@ class Post extends Model
     public function categories(){
         return $this->belongsToMany(Category::class, self::RELATIONSHIP_POST_CETEGORY, 'post', 'category');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'item');
+    }
 }

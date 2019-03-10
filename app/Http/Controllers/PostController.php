@@ -70,13 +70,28 @@ class PostController extends Controller
         }
         //Adcionar Categoria
         //$post->categories()->attach([3]);
+
         //Deletetar Categoria
         //$post->categories()->detach([3]);
 
         //Arrumar categoria apaga e concerta automatico
         //$post->categories()->sync([5,10]);
+
         //Arrumar categoria só add categoria automatica
         //$post->categories()->syncWithoutDetaching([5,6,7]);
+
+//        $post->comments()->create([
+//            'content' => 'comentario 123456'
+//        ]);
+
+        $comments = $post->comments()->get();
+        if($comments){
+            echo "<h1>Comentarios</h1>";
+
+            foreach ($comments as $comment){
+                echo "#{$comment->id} Titulo {$comment->content} <br>";
+            }
+        }
     }
 
     /**
