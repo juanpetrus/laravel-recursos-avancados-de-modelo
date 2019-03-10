@@ -65,9 +65,18 @@ class PostController extends Controller
             echo "<h1>Categorias</h1>";
 
             foreach ($postCetegories as $category){
-                echo "Categoria: {$category->name} <br>";
+                echo "#{$category->id} Categoria: {$category->name} <br>";
             }
         }
+        //Adcionar Categoria
+        //$post->categories()->attach([3]);
+        //Deletetar Categoria
+        //$post->categories()->detach([3]);
+
+        //Arrumar categoria apaga e concerta automatico
+        //$post->categories()->sync([5,10]);
+        //Arrumar categoria só add categoria automatica
+        //$post->categories()->syncWithoutDetaching([5,6,7]);
     }
 
     /**
