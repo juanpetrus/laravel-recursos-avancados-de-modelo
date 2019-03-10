@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -58,6 +59,55 @@ class UserController extends Controller
             echo "Complemento: {$userAddress->complement} CEP: {$userAddress->zipcode}<br>";
             echo "Cidade/Estado: {$userAddress->city}/{$userAddress->state}";
         }
+
+//        $addressTeste = new Address([
+//            'address' => 'Rua dos bobos',
+//            'number' => '7589',
+//            'complement' => 'casa',
+//            'zipcode' => '76820-564',
+//            'city' => 'Porto Velho',
+//            'state' => 'RO'
+//        ]);
+
+//        $address = new Address();
+//        $address->address = 'Rua dos bobos';
+//        $address->number = '7589';
+//        $address->complement = 'casa';
+//        $address->zipcode = '76820-564';
+//        $address->city = 'Porto Velho';
+//        $address->state = 'RO';
+
+//        $user->addressDelivery()->create([
+//            'address' => 'Rua dos bobos',
+//            'number' => '7589',
+//            'complement' => 'casa',
+//            'zipcode' => '76820-564',
+//            'city' => 'Porto Velho',
+//            'state' => 'RO'
+//        ]);
+
+//        $user->addressDelivery()->createMany([[
+//            'address' => 'Rua dos bobos',
+//            'number' => '7589',
+//            'complement' => 'casa',
+//            'zipcode' => '76820-564',
+//            'city' => 'Porto Velho',
+//            'state' => 'RO'
+//        ],[
+//            'address' => 'Rua dos bobos',
+//            'number' => '7589',
+//            'complement' => 'casa',
+//            'zipcode' => '76820-564',
+//            'city' => 'Porto Velho',
+//            'state' => 'RO'
+//        ]]);
+
+        //$user->addressDelivery()->save($address);
+
+        //$user->addressDelivery()->saveMany([$address, $addressTeste]);
+
+        $user = User::with('addressDelivery')->get();
+        dd($user);
     }
 
     /**
