@@ -106,8 +106,19 @@ class UserController extends Controller
 
         //$user->addressDelivery()->saveMany([$address, $addressTeste]);
 
-        $user = User::with('addressDelivery')->get();
-        dd($user);
+//        $user = User::with('addressDelivery')->get();
+//        dd($user);
+
+        $posts = $user->posts()->ordBy('id', 'DESC')->take(2)->get();
+        if($posts){
+            echo "<h1>Artigos</h1>";
+            foreach ($posts as $post) {
+                echo "Titulo: {$post->title}<br>";
+                echo "Subtitulo: {$post->subtitle}<br>";
+                echo "Conteúdo: {$post->description}<br> <hr>";
+            }
+        }
+
     }
 
     /**
