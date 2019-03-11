@@ -159,6 +159,11 @@ class UserController extends Controller
             }
         }
 
+        $users = User::all();
+        var_dump($users->makeVisible('created_at')->toArray());
+        dd($users->makeHidden('created_at')->toJson(JSON_PRETTY_PRINT));
+
+
     }
 
     /**

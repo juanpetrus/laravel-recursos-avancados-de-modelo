@@ -25,8 +25,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'level'
     ];
+
+    protected $visible = ['name', 'email', 'admin'];
+
+    protected $appends = ['admin'];
 
     public function addressDelivery(){
         return $this->hasOne(Address::class, 'user', 'id');
@@ -53,5 +57,10 @@ class User extends Authenticatable
     public function scopeAdmins($query)
     {
         return $query->where('level', '>', 5);
+    }
+
+    public function getAdminAttribute()
+    {
+        return ($this->attributes['level'] > 5 ? true : false);
     }
 }
